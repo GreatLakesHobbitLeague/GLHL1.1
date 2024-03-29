@@ -27,7 +27,7 @@ const handleScroll = () => {
   <!-- Navigation container -->
   <div
     id="header"
-    class="fixed top-0 z-50 w-full"
+    class="fixed top-0 z-50 w-full "
     :class="{ Shrink: scrolled }"
   >
     <div
@@ -38,7 +38,7 @@ const handleScroll = () => {
         ><img
           id="logo"
           :class="{ Shrink: scrolled }"
-          class="max-w-[8rem] sm:max-w-[10rem] md:max-w-[12rem] lg:max-w-[13rem] mx-auto"
+          class="max-w-[4rem] sm:max-w-[10rem] md:max-w-[12rem] lg:max-w-[13rem] mx-auto"
           src="public\images\glhl_logo.png"
           alt="glhl logo"
       /></NuxtLink>
@@ -56,11 +56,13 @@ const handleScroll = () => {
           </p></transition
         >
 
+       
         <p
-          class="font-Ringbearer break-words text-balance text-xl sm:hidden xs:text-2xl text-white p-1 mx-auto my-auto text-center"
+          class="font-Ringbearer break-words text-balance text-xl sm:hidden xs:text-2xl text-white p-1 mx-auto !my-auto text-center"
         >
           Great Lakes Hobbit League
         </p>
+
         <div class="sm:flex mx-auto my-auto hidden max-w-[75%]">
           <NuxtLink class="navlink" to="/">
             <p>home</p>
