@@ -1,6 +1,6 @@
 <template>
   <NuxtLayout>
-    <p class="pt-[20rem] font-Ringbearer text-3xl text-glhl-red-300 mx-2">
+    <p class="pt-[18rem] font-Ringbearer text-3xl text-glhl-red-300 mx-2">
       Home
     </p>
     <p class="mx-2">

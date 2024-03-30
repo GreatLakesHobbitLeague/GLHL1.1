@@ -27,7 +27,7 @@ const handleScroll = () => {
   <!-- Navigation container -->
   <div
     id="header"
-    class="fixed top-0 z-50 w-full"
+    class="fixed top-0 z-50 w-full "
     :class="{ Shrink: scrolled }"
   >
     <div
@@ -56,6 +56,7 @@ const handleScroll = () => {
           </p></transition
         >
 
+       
         <p
           class="font-Ringbearer break-words text-balance text-xl sm:hidden xs:text-2xl text-white p-1 mx-auto !my-auto text-center"
         >
@@ -234,7 +235,7 @@ const handleScroll = () => {
 
 @keyframes navShrink {
   0% {
-    opacity: 0.6;
+    opacity: .6;
   }
   1% {
     transform: scale(2);
@@ -250,21 +251,22 @@ const handleScroll = () => {
 }
 @media (min-width: 640px) {
   @keyframes navShrink {
-    0% {
-      opacity: 1;
-    }
-    1% {
-      transform: scale(2.5);
-    }
-    20% {
-    }
-    80% {
-      opacity: 1;
-    }
-    100% {
-      transform: scale(1);
-    }
+  0% {
+    opacity: 1;
   }
+  1% {
+    transform: scale(2.5);
+  }
+  20% {
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+  
 }
 
 .router-link-active img {

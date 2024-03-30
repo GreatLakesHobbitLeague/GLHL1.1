@@ -1,10 +1,10 @@
 <template>
-  <NuxtLayout> 
+  <NuxtLayout>
     <Header></Header>
-  <div>
-    <NuxtPage></NuxtPage>
-  </div>
-  <Footer></Footer>
+    <div class="bg-[url('/public\images\map-background.webp')] bg-center h-full">
+      <NuxtPage> </NuxtPage>
+    </div>
+    <Footer></Footer>
   </NuxtLayout>
 </template>
 <style></style>
