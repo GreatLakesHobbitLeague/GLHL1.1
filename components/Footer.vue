@@ -15,7 +15,7 @@
         <div class="text-center mx-auto font-Ringbearer text-white sm:text-2xl">
           <p>Join us on Discord and Facebook!</p>
 
-          <div class="flex mx-auto gap-6 justify-center">
+          <div class="flex mx-auto gap-6 justify-center my-4">
             <a
               href="https://discord.com/invite/XyjjrP8vre?fbclid=IwAR288ZVSve2e-tCN7rTEPVPxzrpIzFtbTiR7qWgQiirO6dnNBwmrGsV0MOk_aem_ASPhtNwkDzoWDEAn0YmmWFVBexTaeRkFu0l-L9II2rDEoDw1TcRxtsvdBc70b5hO0VeGLZvImJChUsXLCB7RWyY5"
               target="blank"
