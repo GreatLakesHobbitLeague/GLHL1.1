@@ -27,7 +27,7 @@ const handleScroll = () => {
   <!-- Navigation container -->
   <div
     id="header"
-    class="fixed top-0 z-50 w-full "
+    class="fixed top-0 z-50 w-full"
     :class="{ Shrink: scrolled }"
   >
     <div
@@ -56,14 +56,13 @@ const handleScroll = () => {
           </p></transition
         >
 
-       
         <p
           class="font-Ringbearer break-words text-balance text-xl sm:hidden xs:text-2xl text-white p-1 mx-auto !my-auto text-center"
         >
           Great Lakes Hobbit League
         </p>
 
-        <div class="sm:flex mx-auto my-auto hidden max-w-[75%]">
+        <div class="sm:flex mx-auto  my-auto hidden ">
           <NuxtLink class="navlink" to="/">
             <p>home</p>
             <img
@@ -192,12 +191,9 @@ const handleScroll = () => {
     animation: navShrink 0.5s ease-in-out;
   }
 }
-@media (min-width: 768px) {
+@media (min-width: 800px) {
   .navlink {
     font-size: 1.25rem;
-    background-color: transparent;
-    background-image: none;
-    padding-bottom: none;
   }
 }
 
@@ -235,7 +231,7 @@ const handleScroll = () => {
 
 @keyframes navShrink {
   0% {
-    opacity: .6;
+    opacity: 0.6;
   }
   1% {
     transform: scale(2);
@@ -251,22 +247,21 @@ const handleScroll = () => {
 }
 @media (min-width: 640px) {
   @keyframes navShrink {
-  0% {
-    opacity: 1;
+    0% {
+      opacity: 1;
+    }
+    1% {
+      transform: scale(2.5);
+    }
+    20% {
+    }
+    80% {
+      opacity: 1;
+    }
+    100% {
+      transform: scale(1);
+    }
   }
-  1% {
-    transform: scale(2.5);
-  }
-  20% {
-  }
-  80% {
-    opacity: 1;
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-  
 }
 
 .router-link-active img {
