@@ -193,7 +193,8 @@ const handleScroll = () => {
 }
 @media (min-width: 800px) {
   .navlink {
-    font-size: 1.25rem;
+    font-size: 1.5rem;
+    padding: 2rem;
   }
 }
 

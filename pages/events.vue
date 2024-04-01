@@ -4,6 +4,7 @@
     <p class="pt-[18rem] font-Ringbearer text-3xl text-glhl-red-300 mx-2">
       Events
     </p>
+    <MeetYourTO></MeetYourTO>
     <p class="mx-2 text-">
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse accusantium
       repudiandae sed, odit culpa hic amet. Quo officiis exercitationem ullam

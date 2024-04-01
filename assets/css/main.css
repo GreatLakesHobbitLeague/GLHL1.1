@@ -2,36 +2,38 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-
 /* @font-face {
     font-family: Ringbearer;
     font-weight: 400;
     src: url("\GLHL\assets\fonts\Ringbearer.woff") format("woff");
 }  */
 @font-face {
-    font-family: Ringbearer;
-    font-weight: 400;
-    src: local("Ringbearer") url("\GLHL\assets\fonts\Ringbearer.TTF") format("truetype");
+  font-family: Ringbearer;
+  font-weight: 400;
+  src: local("Ringbearer") url("/assets\fonts\Ringbearer.TTF")
+    format("truetype");
 }
 /* @font-face {
-    font-family: UncialAntiqua;
-    font-weight: 400;
-    src: local("UncialAntiqua") url("\GLHL\assets\fonts\UncialAntiqua.woff") format("woff");
+  font-family: UncialAntiqua;
+  font-weight: 400;
+  src: local("UncialAntiqua") url("/assets\fonts\UncialAntiqua.woff")
+    format("woff");
 }
 @font-face {
-    font-family: UncialAntiqua;
-    font-weight: 400;
-    src: local("UncialAntiqua") url("\assets\fonts\UncialAntiqua.ttf") format("truetype");
+  font-family: UncialAntiqua;
+  font-weight: 400;
+  src: local("UncialAntiqua") url("/assets\fonts\UncialAntiqua.ttf")
+    format("truetype");
 }
 @font-face {
-    font-family: Cinzel;
-    font-weight: 400;
-    src: local("Cinzel") url("\assets\fonts\Cinzel.ttf") format("truetype");
+  font-family: Cinzel;
+  font-weight: 400;
+  src: local("Cinzel") url("/assets\fonts\Cinzel.ttf") format("truetype");
 } */
 
 .page-enter-active,
 .page-leave-active {
-  transition: all .4s;
+  transition: all 0.4s;
 }
 .page-enter-from,
 .page-leave-to {

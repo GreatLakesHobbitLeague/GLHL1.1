@@ -54,12 +54,9 @@ export default {
         "glhl-red-400": "#3d0000",
         "glhl-red-500": "#290000",
 
-        "glhl-gold-100": "#ffe169",
-        "glhl-gold-200": "#edc531",
-        "glhl-gold-300": "#c9a227",
-        "glhl-gold-400": "#a47e1b",
-        "glhl-gold-500": "#805b10",
-  
+        "glhl-gold-100": "#F0E867",
+        "glhl-gold-200": "#471B0D",
+        
       },
       
     },
