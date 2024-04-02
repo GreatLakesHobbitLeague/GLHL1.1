@@ -2,6 +2,7 @@
 declare module 'vue' {
   export interface GlobalComponents {
     'Footer': typeof import("../components/Footer.vue")['default']
+    'GlhlButton': typeof import("../components/GlhlButton.vue")['default']
     'Header': typeof import("../components/Header.vue")['default']
     'MeetYourTO': typeof import("../components/MeetYourTO.vue")['default']
     'NuxtWelcome': typeof import("../node_modules/@nuxt/ui-templates/dist/templates/welcome.vue")['default']
@@ -26,6 +27,7 @@ declare module 'vue' {
     'Html': typeof import("../node_modules/nuxt/dist/head/runtime/components")['Html']
     'Body': typeof import("../node_modules/nuxt/dist/head/runtime/components")['Body']
     'LazyFooter': typeof import("../components/Footer.vue")['default']
+    'LazyGlhlButton': typeof import("../components/GlhlButton.vue")['default']
     'LazyHeader': typeof import("../components/Header.vue")['default']
     'LazyMeetYourTO': typeof import("../components/MeetYourTO.vue")['default']
     'LazyNuxtWelcome': typeof import("../node_modules/@nuxt/ui-templates/dist/templates/welcome.vue")['default']
@@ -53,6 +55,7 @@ declare module 'vue' {
 }
 
 export const Footer: typeof import("../components/Footer.vue")['default']
+export const GlhlButton: typeof import("../components/GlhlButton.vue")['default']
 export const Header: typeof import("../components/Header.vue")['default']
 export const MeetYourTO: typeof import("../components/MeetYourTO.vue")['default']
 export const NuxtWelcome: typeof import("../node_modules/@nuxt/ui-templates/dist/templates/welcome.vue")['default']
@@ -77,6 +80,7 @@ export const Head: typeof import("../node_modules/nuxt/dist/head/runtime/compone
 export const Html: typeof import("../node_modules/nuxt/dist/head/runtime/components")['Html']
 export const Body: typeof import("../node_modules/nuxt/dist/head/runtime/components")['Body']
 export const LazyFooter: typeof import("../components/Footer.vue")['default']
+export const LazyGlhlButton: typeof import("../components/GlhlButton.vue")['default']
 export const LazyHeader: typeof import("../components/Header.vue")['default']
 export const LazyMeetYourTO: typeof import("../components/MeetYourTO.vue")['default']
 export const LazyNuxtWelcome: typeof import("../node_modules/@nuxt/ui-templates/dist/templates/welcome.vue")['default']

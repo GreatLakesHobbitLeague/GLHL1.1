@@ -2,7 +2,7 @@
   <NuxtLayout>
     <Header></Header>
     <div
-      class="bg-[url('/public\images\map-background.webp')] bg-center h-full"
+      class="bg-[url('/public\images\map-background.webp')] bg-fixed bg-cover bg-center h-full"
     >
       <NuxtPage> </NuxtPage>
     </div>

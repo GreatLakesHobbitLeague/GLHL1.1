@@ -50,7 +50,7 @@ const handleScroll = () => {
         <transition name="logoFade">
           <p
             v-if="!scrolled"
-            class="font-Ringbearer break-words text-balance hidden text-xl sm:flex sm:text-3xl md:text-4xl lg:text-4xl xl:text-5xl 2xl:text-7xl text-white p-4 mx-auto text-center"
+            class="font-Ringbearer break-words text-balance hidden text-xl sm:flex sm:text-3xl md:text-4xl lg:text-4xl xl:text-5xl 2xl:text-7xl text-white p-4 mt-4 mx-auto text-center"
           >
             Great Lakes Hobbit League
           </p></transition
@@ -62,7 +62,7 @@ const handleScroll = () => {
           Great Lakes Hobbit League
         </p>
 
-        <div class="sm:flex mx-auto  my-auto hidden ">
+        <div class="sm:flex mx-auto my-auto hidden">
           <NuxtLink class="navlink" to="/">
             <p>home</p>
             <img
@@ -191,7 +191,7 @@ const handleScroll = () => {
     animation: navShrink 0.5s ease-in-out;
   }
 }
-@media (min-width: 800px) {
+@media (min-width: 1200px) {
   .navlink {
     font-size: 1.5rem;
     padding: 2rem;
