@@ -84,14 +84,14 @@ const handleScroll = () => {
               alt="active page"
               class="hidden max-w-15 max-h-5 mx-auto my-auto"
           /></NuxtLink>
-          <NuxtLink class="navlink"
+          <!-- <NuxtLink class="navlink"
             ><p>resources</p>
             <img
               src="\public\images\anduril.png"
               alt="active page"
               class="hidden max-w-15 max-h-5 mx-auto my-auto"
           /></NuxtLink>
-          <NuxtLink class="navlink"><p>merch</p></NuxtLink>
+          <NuxtLink class="navlink"><p>merch</p></NuxtLink> -->
         </div>
       </div>
     </div>
@@ -132,14 +132,14 @@ const handleScroll = () => {
             alt="active page"
             class="hidden max-w-15 max-h-5 mx-auto my-auto"
         /></NuxtLink>
-        <NuxtLink class="navlink"
+        <!-- <NuxtLink class="navlink"
           ><p>resources</p>
           <img
             src="\public\images\anduril.png"
             alt="active page"
             class="hidden max-w-15 max-h-5 mx-auto my-auto"
         /></NuxtLink>
-        <NuxtLink class="navlink"><p>merch</p></NuxtLink>
+        <NuxtLink class="navlink"><p>merch</p></NuxtLink> -->
       </div>
     </Transition>
   </div>

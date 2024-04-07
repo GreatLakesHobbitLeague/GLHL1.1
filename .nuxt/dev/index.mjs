@@ -4,10 +4,12 @@ import { join } from 'node:path';
 import { mkdirSync } from 'node:fs';
 import { parentPort, threadId } from 'node:worker_threads';
 import { defineEventHandler, handleCacheHeaders, splitCookiesString, isEvent, createEvent, fetchWithEvent, getRequestHeader, eventHandler, setHeaders, sendRedirect, proxyRequest, createError, setResponseHeader, send, getResponseStatus, setResponseStatus, setResponseHeaders, getRequestHeaders, createApp, createRouter as createRouter$1, toNodeListener, lazyEventHandler, getRouterParam, getQuery as getQuery$1, readBody, getResponseStatusText } from 'file://C:/Users/whata/OneDrive/Documents/GLHL/node_modules/h3/dist/index.mjs';
+import { getFirestore, collection, getDocs } from 'file://C:/Users/whata/OneDrive/Documents/GLHL/node_modules/firebase/firestore/dist/index.mjs';
+import { initializeApp } from 'file://C:/Users/whata/OneDrive/Documents/GLHL/node_modules/firebase/app/dist/index.mjs';
 import { getRequestDependencies, getPreloadLinks, getPrefetchLinks, createRenderer } from 'file://C:/Users/whata/OneDrive/Documents/GLHL/node_modules/vue-bundle-renderer/dist/runtime.mjs';
 import { stringify, uneval } from 'file://C:/Users/whata/OneDrive/Documents/GLHL/node_modules/devalue/index.js';
 import destr from 'file://C:/Users/whata/OneDrive/Documents/GLHL/node_modules/destr/dist/index.mjs';
-import { parseURL, withoutBase, joinURL, getQuery, withQuery, withTrailingSlash } from 'file://C:/Users/whata/OneDrive/Documents/GLHL/node_modules/ufo/dist/index.mjs';
+import { parseURL, withoutBase, joinURL, getQuery, withQuery } from 'file://C:/Users/whata/OneDrive/Documents/GLHL/node_modules/ufo/dist/index.mjs';
 import { renderToString } from 'file://C:/Users/whata/OneDrive/Documents/GLHL/node_modules/vue/server-renderer/index.mjs';
 import { hash } from 'file://C:/Users/whata/OneDrive/Documents/GLHL/node_modules/ohash/dist/index.mjs';
 import { renderSSRHead } from 'file://C:/Users/whata/OneDrive/Documents/GLHL/node_modules/@unhead/ssr/dist/index.mjs';
@@ -20,10 +22,6 @@ import defu, { defuFn } from 'file://C:/Users/whata/OneDrive/Documents/GLHL/node
 import { createStorage, prefixStorage } from 'file://C:/Users/whata/OneDrive/Documents/GLHL/node_modules/unstorage/dist/index.mjs';
 import unstorage_47drivers_47fs from 'file://C:/Users/whata/OneDrive/Documents/GLHL/node_modules/unstorage/drivers/fs.mjs';
 import { toRouteMatcher, createRouter } from 'file://C:/Users/whata/OneDrive/Documents/GLHL/node_modules/radix3/dist/index.mjs';
-import { AsyncLocalStorage } from 'node:async_hooks';
-import { consola } from 'file://C:/Users/whata/OneDrive/Documents/GLHL/node_modules/consola/dist/index.mjs';
-import devalue from 'file://C:/Users/whata/OneDrive/Documents/GLHL/node_modules/@nuxt/devalue/dist/devalue.mjs';
-import { getContext } from 'file://C:/Users/whata/OneDrive/Documents/GLHL/node_modules/unctx/dist/index.mjs';
 import { version, unref } from 'file://C:/Users/whata/OneDrive/Documents/GLHL/node_modules/vue/index.mjs';
 import { createServerHead as createServerHead$1 } from 'file://C:/Users/whata/OneDrive/Documents/GLHL/node_modules/unhead/dist/index.mjs';
 import { defineHeadPlugin } from 'file://C:/Users/whata/OneDrive/Documents/GLHL/node_modules/@unhead/shared/dist/index.mjs';
@@ -600,90 +598,8 @@ function getRouteRulesForPath(path) {
   return defu({}, ..._routeRulesMatcher.matchAll(path).reverse());
 }
 
-const script = `
-if (!window.__NUXT_DEVTOOLS_TIME_METRIC__) {
-  Object.defineProperty(window, '__NUXT_DEVTOOLS_TIME_METRIC__', {
-    value: {},
-    enumerable: false,
-    configurable: true,
-  })
-}
-window.__NUXT_DEVTOOLS_TIME_METRIC__.appInit = Date.now()
-`;
-
-const _Al3wj3AGrq = (function(nitro) {
-  nitro.hooks.hook("render:html", (htmlContext) => {
-    htmlContext.head.push(`<script>${script}<\/script>`);
-  });
-});
-
-const rootDir = "C:/Users/whata/OneDrive/Documents/GLHL";
-
-const asyncContext = getContext("nuxt-dev", { asyncContext: true, AsyncLocalStorage });
-const _FvO2jGtBiN = (nitroApp) => {
-  const handler = nitroApp.h3App.handler;
-  nitroApp.h3App.handler = (event) => {
-    return asyncContext.callAsync({ logs: [], event }, () => handler(event));
-  };
-  onConsoleLog((_log) => {
-    const ctx = asyncContext.tryUse();
-    if (!ctx) {
-      return;
-    }
-    const stack = getStack();
-    if (stack.includes("runtime/vite-node.mjs")) {
-      return;
-    }
-    const log = {
-      ..._log,
-      // Pass along filename to allow the client to display more info about where log comes from
-      filename: extractFilenameFromStack(stack),
-      // Clean up file names in stack trace
-      stack: normalizeFilenames(stack)
-    };
-    ctx.logs.push(log);
-  });
-  nitroApp.hooks.hook("afterResponse", () => {
-    const ctx = asyncContext.tryUse();
-    if (!ctx) {
-      return;
-    }
-    return nitroApp.hooks.callHook("dev:ssr-logs", { logs: ctx.logs, path: ctx.event.path });
-  });
-  nitroApp.hooks.hook("render:html", (htmlContext) => {
-    const ctx = asyncContext.tryUse();
-    if (!ctx) {
-      return;
-    }
-    htmlContext.bodyAppend.unshift(`<script>window.__NUXT_LOGS__ = ${devalue(asyncContext.use().logs)}<\/script>`);
-  });
-};
-const EXCLUDE_TRACE_RE = /^.*at.*(\/node_modules\/(.*\/)?(nuxt|nuxt-nightly|nuxt-edge|nuxt3|consola|@vue)\/.*|core\/runtime\/nitro.*)$\n?/gm;
-function getStack() {
-  const stack = new Error();
-  Error.captureStackTrace(stack);
-  return stack.stack?.replace(EXCLUDE_TRACE_RE, "").replace(/^Error.*\n/, "") || "";
-}
-const FILENAME_RE = /at.*\(([^:)]+)[):]/;
-const FILENAME_RE_GLOBAL = /at.*\(([^)]+)\)/g;
-function extractFilenameFromStack(stacktrace) {
-  return stacktrace.match(FILENAME_RE)?.[1].replace(withTrailingSlash(rootDir), "");
-}
-function normalizeFilenames(stacktrace) {
-  return stacktrace.replace(FILENAME_RE_GLOBAL, (match, filename) => match.replace(filename, filename.replace("file:///", "/").replace(/:.*$/, "")));
-}
-function onConsoleLog(callback) {
-  consola.addReporter({
-    log(logObj) {
-      callback(logObj);
-    }
-  });
-  consola.wrapConsole();
-}
-
 const plugins = [
-  _Al3wj3AGrq,
-_FvO2jGtBiN
+  
 ];
 
 const scheduledTasks = false;
@@ -813,9 +729,11 @@ const errorHandler = (async function errorhandler(error, event) {
   return send(event, html);
 });
 
+const _lazy_OYL26i = () => Promise.resolve().then(function () { return query_get$1; });
 const _lazy_asEClO = () => Promise.resolve().then(function () { return renderer$1; });
 
 const handlers = [
+  { route: '/api/query', handler: _lazy_OYL26i, lazy: true, middleware: false, method: "get" },
   { route: '/__nuxt_error', handler: _lazy_asEClO, lazy: true, middleware: false, method: undefined },
   { route: '/**', handler: _lazy_asEClO, lazy: true, middleware: false, method: undefined }
 ];
@@ -1025,6 +943,44 @@ const template$1 = _template;
 const errorDev = /*#__PURE__*/Object.freeze({
   __proto__: null,
   template: template$1
+});
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAhQ_W0i5EMwLf-Rnr9zsllLn8XuN_Tcp4",
+  authDomain: "glhl-data.firebaseapp.com",
+  projectId: "glhl-data",
+  storageBucket: "glhl-data.appspot.com",
+  messagingSenderId: "576118053485",
+  appId: "1:576118053485:web:10bf1487c5444ec0b87d64"
+};
+const firebaseApp = initializeApp(firebaseConfig);
+const firestoreDb = getFirestore(firebaseApp);
+
+const queryByCollection = async (col) => {
+  const colRef = collection(firestoreDb, col);
+  const snapshot = await getDocs(colRef);
+  const docs = Array.from(snapshot.docs).map((doc) => {
+    return {
+      ...doc.data(),
+      id: doc.id
+    };
+  });
+  return docs;
+};
+
+const query_get = defineEventHandler(async (event) => {
+  try {
+    const query = getQuery$1(event);
+    const docs = await queryByCollection(query.col);
+    return { result: docs };
+  } catch (error) {
+    return { result: [], error };
+  }
+});
+
+const query_get$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: query_get
 });
 
 const Vue3 = version.startsWith("3");

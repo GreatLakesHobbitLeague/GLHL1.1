@@ -1,15 +1,31 @@
+<script setup>
+import { ref, onMounted } from "vue";
+
+const events = ref([]);
+
+onMounted(async () => {
+  try {
+    const result = await $fetch("/api/query?col=events");
+    events.value = result.result;
+  } catch (error) {
+    console.error("Error fetching pages:", error);
+    // Handle error if needed
+  }
+});
+</script>
 <template>
   <NuxtLayout>
-    <div class="pt-20"></div>
     <div
       class="relative z-10 flex h-7 bg-gradient-to-t from-glhl-red-500 to-glhl-red-100 shadow-md shadow-black"
     ></div>
+
     <div
-      class="bg-[url(/public\images\cinematics\hero_mobile.webp)] md:bg-[url(/public\images\cinematics\hero_desktop.webp)] h-[25rem] md:h-[50rem] lg:bg-center bg-cover shadow-lg shadow-black"
+      class="bg-[url(/public\images\cinematics\hero_mobile.webp)] md:bg-[url(/public\images\cinematics\hero_desktop.webp)] h-[25rem] lg:h-[50rem] lg:bg-center bg-cover shadow-lg shadow-black"
     ></div>
     <div
       class="relative z-10 flex h-7 bg-gradient-to-b from-glhl-red-500 to-glhl-red-100 shadow-md shadow-black"
     ></div>
+
     <div
       class="relative z-10 flex h-[5px] bg-gradient-to-t from-glhl-gold-200 to-glhl-gold-100 shadow-md shadow-black"
     ></div>
@@ -22,12 +38,14 @@
 
     <MeetYourTO></MeetYourTO>
 
+    <!-- SPACER -->
     <img
       class="w-full opacity-10 mx-auto my-40 max-w-[90%]"
       src="C:\Users\whata\OneDrive\Documents\GLHL\public\images\mesbg-silhouettes\Anduril.png"
-      alt="gandalf staff"
+      alt="Anduril"
     />
 
+    <!-- ART PageBreak Links to standings -->
     <div
       class="relative z-10 flex h-7 bg-gradient-to-t from-glhl-red-500 to-glhl-red-100 shadow-md shadow-black"
     ></div>
@@ -96,10 +114,14 @@
         <div class="flex lg:justify-between justify-center">
           <div class="flex gap-2 flex-col">
             <p class="font-Ringbearer text-3xl lg:text-4xl xl:text-5xl">
-              Event Title
+              {{ events.length > 0 ? events[0].eventTitle : "Loading..." }}
             </p>
-            <p class="font-Ringbearer text-2xl italic">maytember 32nd</p>
-            <p class="font-Ringbearer text-xl">kalamatroit</p>
+            <p class="font-Ringbearer text-2xl italic">
+              {{ events.length > 0 ? events[0].eventDate : "" }}
+            </p>
+            <p class="font-Ringbearer text-xl">
+              {{ events.length > 0 ? events[0].eventCity : "" }}
+            </p>
           </div>
           <GlhlButton
             to="events"
@@ -108,12 +130,7 @@
           ></GlhlButton>
         </div>
         <p class="font-mono lg:text-left">
-          Brief Event Description Lorem ipsum dolor sit amet consectetur
-          adipisicing elit. Id libero, impedit dolore magnam expedita nostrum ex
-          perspiciatis voluptas tenetur beatae quos fugit nulla dolores debitis
-          earum reprehenderit quisquam et nihil totam tempora dicta. Temporibus
-          officia natus ullam necessitatibus fuga, sunt, possimus fugit mollitia
-          soluta blanditiis id veniam cumque adipisci modi?
+          {{ events.length > 0 ? events[0].eventDescription : "" }}
         </p>
         <GlhlButton
           to="events"
@@ -123,6 +140,7 @@
       </div>
     </div>
 
+    <!-- PAGEBREAK -->
     <div
       class="flex justify-center mx-auto gap-8 md:my-30 lg:my-40 max-w-[90%]"
     >

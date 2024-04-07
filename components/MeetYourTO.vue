@@ -1,7 +1,9 @@
 <template>
   <!-- hex container -->
 
-  <p class="font-Ringbearer text-center text-3xl sm:text-4xl break-words text-balance md:text-5xl px-8 pb-16">
+  <p
+    class="font-Ringbearer text-center text-3xl sm:text-4xl break-words text-balance md:text-5xl px-8 pb-16"
+  >
     Meet Your GlHlTournament Organizers!
   </p>
   <!-- DESKTOP RIBBON & CONTAINER-->
@@ -13,7 +15,7 @@
     >
       <!-- TABLET RIBBON & CONTAINER-->
       <div
-        class="flex-col justify-center sm:flex-row flex  gap-20 sm:gap-6  sm:bg-[url('/public\images\glhl_banner.png')] lg:bg-none w-full bg-center md:justify-end bg-cover"
+        class="flex-col justify-center sm:flex-row flex gap-20 sm:gap-6 sm:bg-[url('/public\images\glhl_banner_mobile.png')] lg:bg-none w-full bg-center md:justify-end bg-cover"
       >
         <!-- MOBILE RIBBON & CONTAINER-->
         <div
@@ -66,7 +68,7 @@
 
       <!-- TABLET RIBBON & CONTAINER-->
       <div
-        class="flex-col justify-center sm:flex-row flex gap-20 sm:gap-6 sm:bg-[url('/public\images\glhl_banner.png')] lg:bg-none w-full bg-center md:justify-end bg-cover"
+        class="flex-col justify-center sm:flex-row flex gap-20 sm:gap-6 sm:bg-[url('/public\images\glhl_banner_mobile.png')] lg:bg-none w-full bg-center md:justify-end bg-cover"
       >
         <!-- MOBILE RIBBON & CONTAINER-->
         <div
