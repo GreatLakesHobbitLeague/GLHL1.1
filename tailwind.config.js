@@ -43,7 +43,8 @@ export default {
       },
       fontFamily: {
         Ringbearer: ["Ringbearer", "sans-serif"],
-        UncialAntiqua: ["UncialAntiqua", "Cinzel", "sans-serif"],
+        UncialAntiqua: ["Uncial Antiqua", "sans-serif"],
+        Cinzel: ["Cinzel", "sans-serif"],
       },
       colors: {
         "glhl-dark-gray": "#2e2f2f",

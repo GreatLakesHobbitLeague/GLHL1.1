@@ -77,7 +77,7 @@ const handleScroll = () => {
               alt="active page"
               class="hidden max-w-15 max-h-5 mx-auto my-auto"
           /></NuxtLink>
-          <NuxtLink class="navlink"
+          <NuxtLink class="navlink" to="/rankings"
             ><p>rankings</p>
             <img
               src="\public\images\anduril.png"
@@ -125,7 +125,7 @@ const handleScroll = () => {
             alt="active page"
             class="hidden max-w-15 max-h-5 mx-auto my-auto"
         /></NuxtLink>
-        <NuxtLink class="navlink"
+        <NuxtLink class="navlink" to="/rankings"
           ><p>rankings</p>
           <img
             src="\public\images\anduril.png"
