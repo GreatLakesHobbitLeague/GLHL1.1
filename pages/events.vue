@@ -1,15 +1,32 @@
-<script setup>
-import { ref, onMounted } from "vue";
+<script lang="ts" setup>
+import { ref } from "vue";
+import { createClient } from "@supabase/supabase-js";
+
+// Initialize Supabase client
+const supabaseUrl = "https://ienwmfvepudsgvruuuwh.supabase.co";
+const supabaseKey =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImllbndtZnZlcHVkc2d2cnV1dXdoIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTcxNTExOTU3NywiZXhwIjoyMDMwNjk1NTc3fQ.jkuPHQfGZ-iKvyCEJuRLxCVCzvcnikSt-E19526AOZY";
+const $supabase = createClient(supabaseUrl, supabaseKey);
 
 const events = ref([]);
+const loading = ref(false);
+const error = ref(null);
 
 onMounted(async () => {
   try {
-    const result = await $fetch("/api/query?col=events");
-    events.value = result.result;
-  } catch (error) {
-    console.error("Error fetching pages:", error);
-    // Handle error if needed
+    loading.value = true;
+    const { data, error: fetchError } = await $supabase
+      .from("events")
+      .select("*");
+    if (fetchError) {
+      throw new Error(fetchError.message);
+    }
+    events.value = data;
+  } catch (err) {
+    console.error("Error fetching data:", err.message);
+    error.value = "Failed to fetch data";
+  } finally {
+    loading.value = false;
   }
 });
 </script>
@@ -57,6 +74,7 @@ onMounted(async () => {
     <!-- EVENT INFO CONTAINER -->
     <div
       v-for="(event, index) in events"
+      :key="index"
       class="odd:bg-[url(/public\images\textures\red_leather.webp)] bg-[url(/public\images\textures\black_iron.webp)] bg-cover my-8"
     >
       <div
@@ -84,18 +102,18 @@ onMounted(async () => {
           <div class="flex lg:justify-between justify-center">
             <div class="flex gap-2 flex-col">
               <p class="font-Ringbearer text-3xl lg:text-4xl xl:text-5xl">
-                {{ events.length > 0 ? event.eventTitle : "Loading..." }}
+                {{ event.EventTitle }}
               </p>
               <p class="font-Ringbearer text-2xl italic">
-                {{ events.length > 0 ? event.eventDate : "" }}
+                {{ event.EventDate }}
               </p>
               <p class="font-Ringbearer text-xl">
-                {{ events.length > 0 ? event.eventCity : "" }}
+                {{ event.EventCity }}
               </p>
             </div>
           </div>
           <p class="font-mono lg:text-left">
-            {{ events.length > 0 ? event.eventDescription : "" }}
+            {{ event.EventDescription }}
           </p>
         </div>
       </div>
