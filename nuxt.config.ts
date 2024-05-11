@@ -12,7 +12,6 @@ export default defineNuxtConfig({
 
   // Other configurations
   // @ts-ignore
-  buildModules: ["@nuxtjs/composition-api/module"],
 
   modules: ["@nuxtjs/supabase", "@nuxtjs/google-fonts"],
 

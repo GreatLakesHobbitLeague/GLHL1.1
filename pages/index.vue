@@ -1,15 +1,52 @@
 <script setup>
 import { ref, onMounted } from "vue";
+import { createClient } from "@supabase/supabase-js";
+
+// Initialize Supabase client
+const supabaseUrl = "https://ienwmfvepudsgvruuuwh.supabase.co";
+const supabaseKey =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImllbndtZnZlcHVkc2d2cnV1dXdoIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTcxNTExOTU3NywiZXhwIjoyMDMwNjk1NTc3fQ.jkuPHQfGZ-iKvyCEJuRLxCVCzvcnikSt-E19526AOZY";
+const $supabase = createClient(supabaseUrl, supabaseKey);
 
 const events = ref([]);
+const loading = ref(false);
+const error = ref(null);
+
+const eventImages = [
+  { src: "/images/event-photos/mchc.webp" },
+  { src: "/images/event-photos/february2024.webp" },
+  { src: "/images/event-photos/adepticon2024.webp" },
+  { src: "/images/event-photos/october2023.webp" },
+
+  // Add more images here if needed
+];
 
 onMounted(async () => {
   try {
-    const result = await $fetch("/api/query?col=events");
-    events.value = result.result;
-  } catch (error) {
-    console.error("Error fetching pages:", error);
-    // Handle error if needed
+    loading.value = true;
+    const { data, error: fetchError } = await $supabase
+      .from("events")
+      .select("*");
+    if (fetchError) {
+      throw new Error(fetchError.message);
+    }
+    events.value = data;
+  } catch (err) {
+    console.error("Error fetching data:", err.message);
+    error.value = "Failed to fetch data";
+  } finally {
+    loading.value = false;
+  }
+});
+
+onMounted(() => {
+  // Get the video element
+  const video = document.querySelector("video");
+
+  // Check if the video element exists before setting properties
+  if (video) {
+    // Set the playback rate to slow down the video (e.g., 0.5 for half speed)
+    video.playbackRate = 0.4;
   }
 });
 </script>
@@ -19,9 +56,18 @@ onMounted(async () => {
       class="relative z-10 flex h-7 bg-gradient-to-t from-glhl-red-500 to-glhl-red-100 shadow-md shadow-black"
     ></div>
 
-    <div
-      class="bg-[url(/public\images\cinematics\hero_mobile.webp)] md:bg-[url(/public\images\cinematics\hero_desktop.webp)] h-[25rem] lg:h-[50rem] lg:bg-center bg-cover shadow-lg shadow-black"
-    ></div>
+    <div class="relative h-[25rem] lg:h-[50rem] w-full">
+      <div
+        class="bg-[url(/public\images\cinematics\hero_mobile.webp)] md:bg-[url(/public\images\cinematics\hero_desktop.jpg)] lg:bg-center bg-cover shadow-lg shadow-black w-full h-full"
+      ></div>
+      <video
+        src="public/images/cinematics/spark_overlay.webm"
+        class="absolute top-0 left-0 bg-blend-multiply opacity-45 w-full h-full object-cover hidden md:flex"
+        autoplay
+        muted
+        loop
+      ></video>
+    </div>
     <div
       class="relative z-10 flex h-7 bg-gradient-to-b from-glhl-red-500 to-glhl-red-100 shadow-md shadow-black"
     ></div>
@@ -31,7 +77,7 @@ onMounted(async () => {
     ></div>
 
     <img
-      class="w-full opacity-10 mx-auto my-40 max-w-[90%]"
+      class="w-full opacity-10 mx-auto my-20 max-w-[90%]"
       src="C:\Users\whata\OneDrive\Documents\GLHL\public\images\mesbg-silhouettes\Gandalf.png"
       alt="gandalf staff"
     />
@@ -40,7 +86,7 @@ onMounted(async () => {
 
     <!-- SPACER -->
     <img
-      class="w-full opacity-10 mx-auto my-40 max-w-[90%]"
+      class="w-full opacity-10 mx-auto my-20 max-w-[90%]"
       src="C:\Users\whata\OneDrive\Documents\GLHL\public\images\mesbg-silhouettes\Anduril.png"
       alt="Anduril"
     />
@@ -75,9 +121,7 @@ onMounted(async () => {
       </div>
     </div>
 
-    <div
-      class="flex justify-center mx-auto gap-8 md:my-30 lg:my-40 max-w-[90%]"
-    >
+    <div class="flex justify-center mx-auto gap-8 max-w-[90%]">
       <img
         class="md:w-[50%] w-full opacity-10 my-[5rem] flex"
         src="C:\Users\whata\OneDrive\Documents\GLHL\public\images\mesbg-silhouettes\Uruk_1.png"
@@ -91,7 +135,7 @@ onMounted(async () => {
     </div>
 
     <p
-      class="font-Ringbearer text-center lg:text-left text-3xl sm:text-4xl break-words text-balance md:text-5xl px-8 pb-16"
+      class="font-Ringbearer text-center lg:text-left text-3xl sm:text-4xl break-words text-balance md:text-5xl px-8 pb-8"
     >
       Get Ready For Our Next Big Event!
     </p>
@@ -114,13 +158,13 @@ onMounted(async () => {
         <div class="flex lg:justify-between justify-center">
           <div class="flex gap-2 flex-col">
             <p class="font-Ringbearer text-3xl lg:text-4xl xl:text-5xl">
-              {{ events.length > 0 ? events[0].eventTitle : "Loading..." }}
+              {{ events.length > 0 ? events[0].EventTitle : "Loading..." }}
             </p>
             <p class="font-Ringbearer text-2xl italic">
-              {{ events.length > 0 ? events[0].eventDate : "" }}
+              {{ events.length > 0 ? events[0].EventDate : "" }}
             </p>
             <p class="font-Ringbearer text-xl">
-              {{ events.length > 0 ? events[0].eventCity : "" }}
+              {{ events.length > 0 ? events[0].EventCity : "" }}
             </p>
           </div>
           <GlhlButton
@@ -130,7 +174,7 @@ onMounted(async () => {
           ></GlhlButton>
         </div>
         <p class="font-mono lg:text-left">
-          {{ events.length > 0 ? events[0].eventDescription : "" }}
+          {{ events.length > 0 ? events[0].EventDescription : "" }}
         </p>
         <GlhlButton
           to="events"
@@ -141,9 +185,7 @@ onMounted(async () => {
     </div>
 
     <!-- PAGEBREAK -->
-    <div
-      class="flex justify-center mx-auto gap-8 md:my-30 lg:my-40 max-w-[90%]"
-    >
+    <div class="flex justify-center mx-auto gap-8 max-w-[90%]">
       <img
         class="md:w-[50%] w-full opacity-10 my-[5rem] flex"
         src="C:\Users\whata\OneDrive\Documents\GLHL\public\images\mesbg-silhouettes\Gimli_1.png"
