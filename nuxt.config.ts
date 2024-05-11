@@ -10,17 +10,6 @@ export default defineNuxtConfig({
     },
   },
 
-  
-  head: {
-    script: [
-      {
-        src: 'https://unpkg.com/swiper/swiper-bundle.min.js',
-        type: 'text/javascript',
-      },
-    ],
-  },
-
-
   modules: ["@nuxtjs/supabase", "@nuxtjs/google-fonts"],
 
   supabase: {
