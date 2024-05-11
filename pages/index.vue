@@ -157,7 +157,9 @@ onMounted(() => {
       >
         <div class="flex lg:justify-between justify-center">
           <div class="flex gap-2 flex-col">
-            <p class="font-Ringbearer text-3xl lg:text-4xl xl:text-5xl">
+            <p
+              class="font-Ringbearer text-3xl lg:text-4xl xl:text-5xl text-balance"
+            >
               {{ events.length > 0 ? events[0].EventTitle : "Loading..." }}
             </p>
             <p class="font-Ringbearer text-2xl italic">
@@ -168,7 +170,7 @@ onMounted(() => {
             </p>
           </div>
           <GlhlButton
-            to="events"
+            to="event"
             text="Full details"
             class="my-auto text-2xl hidden lg:flex"
           ></GlhlButton>
@@ -227,11 +229,6 @@ onMounted(() => {
           alt="paragon miniatures"
         />
       </a>
-      <img
-        class="sponsor"
-        src="/public\images\sponsors\paragon_logo.png"
-        alt="paragon miniatures"
-      />
     </div>
   </NuxtLayout>
 </template>

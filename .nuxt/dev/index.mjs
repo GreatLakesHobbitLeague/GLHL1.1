@@ -4,8 +4,6 @@ import { join } from 'node:path';
 import { mkdirSync } from 'node:fs';
 import { parentPort, threadId } from 'node:worker_threads';
 import { defineEventHandler, handleCacheHeaders, splitCookiesString, isEvent, createEvent, fetchWithEvent, getRequestHeader, eventHandler, setHeaders, sendRedirect, proxyRequest, createError, setResponseHeader, send, getResponseStatus, setResponseStatus, setResponseHeaders, getRequestHeaders, createApp, createRouter as createRouter$1, toNodeListener, lazyEventHandler, getRouterParam, getQuery as getQuery$1, readBody, getResponseStatusText } from 'file://C:/Users/whata/OneDrive/Documents/GLHL/node_modules/h3/dist/index.mjs';
-import { getFirestore, collection, getDocs } from 'file://C:/Users/whata/OneDrive/Documents/GLHL/node_modules/firebase/firestore/dist/index.mjs';
-import { initializeApp } from 'file://C:/Users/whata/OneDrive/Documents/GLHL/node_modules/firebase/app/dist/index.mjs';
 import { getRequestDependencies, getPreloadLinks, getPrefetchLinks, createRenderer } from 'file://C:/Users/whata/OneDrive/Documents/GLHL/node_modules/vue-bundle-renderer/dist/runtime.mjs';
 import { stringify, uneval } from 'file://C:/Users/whata/OneDrive/Documents/GLHL/node_modules/devalue/index.js';
 import destr from 'file://C:/Users/whata/OneDrive/Documents/GLHL/node_modules/destr/dist/index.mjs';
@@ -758,11 +756,9 @@ const errorHandler = (async function errorhandler(error, event) {
   return send(event, html);
 });
 
-const _lazy_OYL26i = () => Promise.resolve().then(function () { return query_get$1; });
 const _lazy_asEClO = () => Promise.resolve().then(function () { return renderer$1; });
 
 const handlers = [
-  { route: '/api/query', handler: _lazy_OYL26i, lazy: true, middleware: false, method: "get" },
   { route: '/__nuxt_error', handler: _lazy_asEClO, lazy: true, middleware: false, method: undefined },
   { route: '/**', handler: _lazy_asEClO, lazy: true, middleware: false, method: undefined }
 ];
@@ -972,44 +968,6 @@ const template$1 = _template;
 const errorDev = /*#__PURE__*/Object.freeze({
   __proto__: null,
   template: template$1
-});
-
-const firebaseConfig = {
-  apiKey: "AIzaSyAhQ_W0i5EMwLf-Rnr9zsllLn8XuN_Tcp4",
-  authDomain: "glhl-data.firebaseapp.com",
-  projectId: "glhl-data",
-  storageBucket: "glhl-data.appspot.com",
-  messagingSenderId: "576118053485",
-  appId: "1:576118053485:web:10bf1487c5444ec0b87d64"
-};
-const firebaseApp = initializeApp(firebaseConfig);
-const firestoreDb = getFirestore(firebaseApp);
-
-const queryByCollection = async (col) => {
-  const colRef = collection(firestoreDb, col);
-  const snapshot = await getDocs(colRef);
-  const docs = Array.from(snapshot.docs).map((doc) => {
-    return {
-      ...doc.data(),
-      id: doc.id
-    };
-  });
-  return docs;
-};
-
-const query_get = defineEventHandler(async (event) => {
-  try {
-    const query = getQuery$1(event);
-    const docs = await queryByCollection(query.col);
-    return { result: docs };
-  } catch (error) {
-    return { result: [], error };
-  }
-});
-
-const query_get$1 = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  default: query_get
 });
 
 const Vue3 = version.startsWith("3");

@@ -1,5 +1,48 @@
 <script setup>
 import { ref, onMounted, TransitionGroup } from "vue";
+import { createClient } from "@supabase/supabase-js";
+
+// Initialize Supabase client
+const supabaseUrl = "https://ienwmfvepudsgvruuuwh.supabase.co";
+const supabaseKey =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImllbndtZnZlcHVkc2d2cnV1dXdoIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTcxNTExOTU3NywiZXhwIjoyMDMwNjk1NTc3fQ.jkuPHQfGZ-iKvyCEJuRLxCVCzvcnikSt-E19526AOZY";
+const $supabase = createClient(supabaseUrl, supabaseKey);
+
+const artisans = ref([]);
+const tacticians = ref([]);
+const loading = ref(false);
+const error = ref(null);
+
+onMounted(async () => {
+  try {
+    loading.value = true;
+
+    // Fetch data from the "artisansOfLegend" table
+    const { data: artisansData, error: artisansError } = await $supabase
+      .from("artisansOfLegend")
+      .select("*");
+
+    if (artisansError) {
+      throw new Error(artisansError.message);
+    }
+    artisans.value = artisansData;
+
+    // Fetch data from the "tacticiansOfLegend" table
+    const { data: tacticiansData, error: tacticiansError } = await $supabase
+      .from("tacticiansOfLegend")
+      .select("*");
+
+    if (tacticiansError) {
+      throw new Error(tacticiansError.message);
+    }
+    tacticians.value = tacticiansData;
+  } catch (err) {
+    console.error("Error fetching data:", err.message);
+    error.value = "Failed to fetch data";
+  } finally {
+    loading.value = false;
+  }
+});
 
 // tab controls
 const activeTab = ref("tactician");
@@ -13,13 +56,13 @@ const changeTabs = (tab) => {
 };
 </script>
 <template>
-  <div class="md:mt-60"></div>
+  <div class="mt-20 sm:mt-32 md:mt-52"></div>
 
   <!-- HEADER -->
   <div
     class="bg-[url(/public\images\cinematics\hero_desktop.webp)] bg-center bg-cover shadow-lg shadow-black"
   >
-    <div class="bg-black bg-opacity-85 text-white flex justify-center my-32">
+    <div class="bg-black bg-opacity-85 text-white flex justify-center mb-10">
       <!-- TEXTBOX -->
       <div class="my-auto flex flex-col">
         <p class="text-6xl font-Ringbearer justify-center py-10">Rankings</p>
@@ -39,32 +82,61 @@ const changeTabs = (tab) => {
 
     <div class="flex flex-col gap-8 sm:max-w-[600px] w-full">
       <!-- Coin Podium -->
-      <section class="flex justify-center items-baseline gap-8">
-        <div class="justify-center text-center flex flex-col gap-2">
+      <section
+        class="flex justify-center items-baseline gap-8 relative font-Ringbearer px-4"
+      >
+        <div class="justify-center text-center flex flex-col gap-2 z-10">
           <img
             src="/images/rankings/glhl_silver.png"
             alt="silver medal"
             class="w-28 rounded-full mx-auto shadow-md shadow-black"
           />
-          <p>Todd Skinner</p>
+          <div v-if="!loading">
+            <transition name="slide-in" mode="out-in">
+              <p v-if="activeTab === 'tactician'">
+                {{ tacticians.length > 0 ? tacticians[1].Name : "Loading..." }}
+              </p>
+              <p v-else>
+                {{ artisans.length > 0 ? artisans[1].Name : "Loading..." }}
+              </p>
+            </transition>
+          </div>
         </div>
 
-        <div class="justify-center text-center flex flex-col gap-2">
+        <div class="justify-center text-center flex flex-col gap-2 z-10">
           <img
             src="/images/rankings/glhl_legend.png"
             alt="gold medal"
             class="w-52 mx-auto"
           />
-          <p>Todd Skinner</p>
+          <div v-if="!loading">
+            <transition name="slide-in" mode="out-in">
+              <p v-if="activeTab === 'tactician'">
+                {{ tacticians.length > 0 ? tacticians[0].Name : "Loading..." }}
+              </p>
+              <p v-else>
+                {{ artisans.length > 0 ? artisans[0].Name : "Loading..." }}
+              </p>
+            </transition>
+          </div>
         </div>
 
-        <div class="justify-center text-center flex flex-col gap-2">
+        <div class="justify-center text-center flex flex-col gap-2 z-10">
           <img
             src="/images/rankings/glhl_bronze.png"
             alt="bronze medal"
             class="w-28 rounded-full mx-auto shadow-md shadow-black"
           />
-          <p>Todd Skinner</p>
+          <div v-if="!loading">
+            <transition name="slide-in" mode="out-in">
+              <p v-if="activeTab === 'tactician'">
+                {{ tacticians.length > 0 ? tacticians[2].Name : "Loading..." }}
+              </p>
+              <p v-else>
+                {{ artisans.length > 0 ? artisans[2].Name : "Loading..." }}
+              </p>
+            </transition>
+          </div>
         </div>
       </section>
 
@@ -107,7 +179,7 @@ const changeTabs = (tab) => {
           <p class="w-[50%]">Total Points</p>
         </div>
         <div
-          class="container relative min-h-96 bg-gradient-to-t to-glhl-red-400 from-glhl-red-100 rounded-b-md"
+          class="container relative min-w-full min-h-96 bg-gradient-to-t to-glhl-red-400 from-glhl-red-100 rounded-b-md"
         >
           <div class="m-0.5">
             <Transition name="slide-in" mode="out-in">

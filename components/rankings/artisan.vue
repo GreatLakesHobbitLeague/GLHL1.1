@@ -74,7 +74,7 @@ const scrollContainerRef = ref(null);
       class="bg-white rounded-b-md flex flex-col gap-1 h-96 overflow-y-scroll relative"
     >
       <div
-        class="flex sticky top-0 text-xs xs:text-lg font-Cinzel text-white font-bold text-center bg-cover bg-center bg-[url(/public\images\textures/glhl_gold.webp)] p-2 shadow-md shadow-black rounded-b-md"
+        class="flex sticky top-0 text-xs xs:text-lg font-Cinzel font-bold text-center bg-cover bg-[url(/public\images\textures/glhl_gold.webp)] p-2 shadow-md shadow-black rounded-b-md"
       >
         <p class="w-[25%]"></p>
         <p class="w-[75%] text-left">Artisans of Legend</p>

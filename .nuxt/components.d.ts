@@ -3,6 +3,7 @@ declare module 'vue' {
   export interface GlobalComponents {
     'Footer': typeof import("../components/Footer.vue")['default']
     'GlhlButton': typeof import("../components/GlhlButton.vue")['default']
+    'GlhlCarousel': typeof import("../components/GlhlCarousel.vue")['default']
     'Header': typeof import("../components/Header.vue")['default']
     'MeetYourTO': typeof import("../components/MeetYourTO.vue")['default']
     'PreviousWinners': typeof import("../components/PreviousWinners.vue")['default']
@@ -31,6 +32,7 @@ declare module 'vue' {
     'Body': typeof import("../node_modules/nuxt/dist/head/runtime/components")['Body']
     'LazyFooter': typeof import("../components/Footer.vue")['default']
     'LazyGlhlButton': typeof import("../components/GlhlButton.vue")['default']
+    'LazyGlhlCarousel': typeof import("../components/GlhlCarousel.vue")['default']
     'LazyHeader': typeof import("../components/Header.vue")['default']
     'LazyMeetYourTO': typeof import("../components/MeetYourTO.vue")['default']
     'LazyPreviousWinners': typeof import("../components/PreviousWinners.vue")['default']
@@ -62,6 +64,7 @@ declare module 'vue' {
 
 export const Footer: typeof import("../components/Footer.vue")['default']
 export const GlhlButton: typeof import("../components/GlhlButton.vue")['default']
+export const GlhlCarousel: typeof import("../components/GlhlCarousel.vue")['default']
 export const Header: typeof import("../components/Header.vue")['default']
 export const MeetYourTO: typeof import("../components/MeetYourTO.vue")['default']
 export const PreviousWinners: typeof import("../components/PreviousWinners.vue")['default']
@@ -90,6 +93,7 @@ export const Html: typeof import("../node_modules/nuxt/dist/head/runtime/compone
 export const Body: typeof import("../node_modules/nuxt/dist/head/runtime/components")['Body']
 export const LazyFooter: typeof import("../components/Footer.vue")['default']
 export const LazyGlhlButton: typeof import("../components/GlhlButton.vue")['default']
+export const LazyGlhlCarousel: typeof import("../components/GlhlCarousel.vue")['default']
 export const LazyHeader: typeof import("../components/Header.vue")['default']
 export const LazyMeetYourTO: typeof import("../components/MeetYourTO.vue")['default']
 export const LazyPreviousWinners: typeof import("../components/PreviousWinners.vue")['default']

@@ -45,7 +45,7 @@ onMounted(async () => {
     <!-- TABLE -->
     <div class="w-[90%] md:w-[50%] xl:w-[35%] mx-auto relative">
       <p
-        class="font-Ringbearer text-center lg:text-left text-3xl sm:text-4xl break-words text-balance lg:text-5xl pb-2"
+        class="font-Ringbearer text-center lg:text-left text-3xl sm:text-4xl break-words text-balance pb-2"
       >
         Last Event's Finalists:
       </p>

@@ -37,22 +37,57 @@ onMounted(async () => {
     loading.value = false;
   }
 });
+
+//check screen size for carousel
+const screenWidth = ref(0); // Initialize with 0
+
+const isSmallScreen = computed(() => {
+  return screenWidth.value < 1024; // You can adjust this threshold according to your needs
+});
+
+const updateScreenWidth = () => {
+  screenWidth.value = window.innerWidth;
+};
+
+// Only execute code on the client-side
+if (process.client) {
+  onMounted(() => {
+    screenWidth.value = window.innerWidth; // Initialize screenWidth on mount
+    window.addEventListener("resize", updateScreenWidth);
+  });
+
+  onBeforeUnmount(() => {
+    window.removeEventListener("resize", updateScreenWidth);
+  });
+}
 </script>
 
 <template>
   <NuxtLayout>
-    <div class="md:mt-60"></div>
+    <div class="mt-20 sm:mt-32 md:mt-52"></div>
 
     <!-- HEADER -->
     <div
       class="bg-[url(/public\images\cinematics\woses_desktop.webp)] bg-center bg-cover shadow-lg shadow-black"
     >
-      <div class="bg-black bg-opacity-85 text-white flex justify-center mt-32">
+      <div class="bg-black bg-opacity-85 text-white flex justify-center">
         <!-- TEXTBOX -->
         <div class="my-auto flex flex-col">
           <p class="text-6xl font-Ringbearer justify-center py-10">Events</p>
         </div>
       </div>
+    </div>
+
+    <GlhlCarousel v-if="!isSmallScreen" />
+    <div v-else>
+      <div
+        class="h-14 w-full bg-gradient-to-t from-black to-glhl-dark-gray z-20 shadow-md shadow-black"
+      ></div>
+      <img
+        src="/images/event-photos/adepticon2024.webp"
+        alt="adepticon 2024"
+        class="shadow-xl shadow-black"
+      />
     </div>
 
     <div class="flex justify-center mx-auto gap-8 max-w-[90%]">
@@ -94,7 +129,7 @@ onMounted(async () => {
     <div
       v-for="(event, index) in events"
       :key="index"
-      class="even:bg-[url(/public\images\textures\red_leather.webp)] bg-[url(/public\images\textures\black_iron.webp)] bg-cover my-8"
+      class="odd:bg-[url(/public\images\textures\red_leather.webp)] bg-[url(/public\images\textures\black_iron.webp)] bg-cover my-8"
     >
       <div
         class="w-full bg-[url(/public\images\textures\glhl_gold.webp)] bg-cover shadow-lg shadow-black text-white h-2"

@@ -1,27 +1,35 @@
-<script type="ts" setup>
-import { ref } from 'vue';
+<script setup lang="ts">
+import { ref, onMounted } from "vue";
 
-const dropDown = new ref(true)
-const scrolled = new ref(false)
+const dropDown = ref(true);
+const scrolled = ref(false);
 
-  const openMenu = ()=> {
-    dropDown.value = !dropDown.value
-}
-
-
-onMounted(() => {
-    window.addEventListener('scroll', handleScroll);
-
-});
+const openMenu = () => {
+  dropDown.value = !dropDown.value;
+};
 
 const handleScroll = () => {
-    if (window.pageYOffset > 50) {
-    scrolled.value = true;
-    }
-    else {
-        scrolled.value = false;
-    }
-}
+  scrolled.value = window.pageYOffset > 50;
+};
+
+const closeMenu = (event) => {
+  // Check if the click occurred outside of the dropdown element
+  const dropdownElement = document.querySelector(".dropdown");
+  if (dropdownElement && !dropdownElement.contains(event.target)) {
+    dropDown.value = true;
+  }
+};
+
+onMounted(() => {
+  window.addEventListener("scroll", handleScroll);
+  document.addEventListener("click", closeMenu);
+});
+
+// Don't forget to remove event listeners when the component is unmounted
+onUnmounted(() => {
+  window.removeEventListener("scroll", handleScroll);
+  document.removeEventListener("click", closeMenu);
+});
 </script>
 <template>
   <!-- Navigation container -->
@@ -70,7 +78,7 @@ const handleScroll = () => {
               alt="active page"
               class="hidden max-w-15 max-h-5 mx-auto my-auto"
           /></NuxtLink>
-          <NuxtLink class="navlink" to="/events"
+          <NuxtLink class="navlink" to="/event"
             ><p>events</p>
             <img
               src="\public\images\anduril.png"
@@ -97,7 +105,7 @@ const handleScroll = () => {
     </div>
 
     <div
-      class="relative z-10 flex sm:h-5 border-transparent bg-gradient-to-t from-glhl-red-500 to-glhl-red-100 shadow-md shadow-black"
+      class="dropdown relative z-10 flex sm:h-5 border-transparent bg-gradient-to-t from-glhl-red-500 to-glhl-red-100 shadow-md shadow-black"
     >
       <button
         class="text-3xl text-center py-2 text-white mx-auto sm:hidden w-full"
@@ -109,7 +117,7 @@ const handleScroll = () => {
     <Transition name="dropDown">
       <div
         v-if="!dropDown"
-        class="flex flex-col mx-auto w-full z-0 shadow-md shadow-black sm:hidden"
+        class="dropdown flex flex-col mx-auto w-full z-0 shadow-md shadow-black sm:hidden"
       >
         <NuxtLink class="navlink" to="/">
           <p>home</p>
@@ -118,7 +126,7 @@ const handleScroll = () => {
             alt="active page"
             class="hidden max-w-15 max-h-5 mx-auto my-auto"
         /></NuxtLink>
-        <NuxtLink class="navlink" to="/events"
+        <NuxtLink class="navlink" to="/event"
           ><p>events</p>
           <img
             src="\public\images\anduril.png"

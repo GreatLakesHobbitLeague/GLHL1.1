@@ -10,8 +10,16 @@ export default defineNuxtConfig({
     },
   },
 
-  // Other configurations
-  // @ts-ignore
+  
+  head: {
+    script: [
+      {
+        src: 'https://unpkg.com/swiper/swiper-bundle.min.js',
+        type: 'text/javascript',
+      },
+    ],
+  },
+
 
   modules: ["@nuxtjs/supabase", "@nuxtjs/google-fonts"],
 
@@ -29,3 +37,4 @@ export default defineNuxtConfig({
   },
 });
 // nuxt.config.js
+
