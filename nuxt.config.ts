@@ -1,5 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  ssr: false, // Disable server-side rendering (prerendering)
+
   devtools: { enabled: true },
   css: ["~/assets/css/main.css"],
 
@@ -8,6 +10,11 @@ export default defineNuxtConfig({
       tailwindcss: {},
       autoprefixer: {},
     },
+  },
+
+  app: {
+    baseURL: "/GLHL1.1/", // Adjust this value to match your GitHub Pages repository name
+    buildAssetsDir: "assets", // Specify the directory where built assets will be located
   },
 
   modules: ["@nuxtjs/supabase", "@nuxtjs/google-fonts"],
@@ -26,4 +33,3 @@ export default defineNuxtConfig({
   },
 });
 // nuxt.config.js
-
