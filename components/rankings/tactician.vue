@@ -88,7 +88,7 @@ const scrollContainerRef = ref(null);
         <p class="w-[50%] font-bold text-lg font-Cinzel">{{ player.Rank }}</p>
         <p
           class="w-full"
-          :class="player.Qualified ? 'font-semibold' : 'text-glhl-dark-gray'"
+          :class="player.Qualified ? 'font-semibold' : ' font-light '"
         >
           {{ player.Name }}
         </p>
@@ -108,7 +108,12 @@ const scrollContainerRef = ref(null);
         class="flex w-full text-left items-center even:bg-glhl-light-gray px-2"
       >
         <p class="w-[50%] font-bold text-lg font-Cinzel">{{ player.Rank }}</p>
-        <p class="w-full">{{ player.Name }}</p>
+        <p
+          class="w-full"
+          :class="player.Qualified ? 'font-semibold' : ' font-thin'"
+        >
+          {{ player.Name }}
+        </p>
         <p class="w-[50%] text-center">{{ player.TotalPoints }}</p>
       </div>
 
@@ -127,7 +132,12 @@ const scrollContainerRef = ref(null);
         class="flex w-full text-left items-center even:bg-glhl-light-gray px-2"
       >
         <p class="w-[50%] font-bold text-lg font-Cinzel">{{ player.Rank }}</p>
-        <p class="w-full">{{ player.Name }}</p>
+        <p
+          class="w-full"
+          :class="player.Qualified ? 'font-semibold' : ' font-light'"
+        >
+          {{ player.Name }}
+        </p>
         <p class="w-[50%] text-center">{{ player.TotalPoints }}</p>
       </div>
     </div>
