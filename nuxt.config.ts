@@ -15,6 +15,13 @@ export default defineNuxtConfig({
     buildAssetsDir: "assets", // Specify the directory where built assets will be located
   },
 
+  nitro: {
+    prerender: {
+      // Workaround for "Error: [404] Page not found: /manifest.json"
+      failOnError: false,
+    },
+  },
+
   modules: ["@nuxtjs/supabase", "@nuxtjs/google-fonts"],
 
   supabase: {
