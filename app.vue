@@ -11,7 +11,7 @@ useHead({
       content:
         "Join the Great Lakes Hobbit League for monthly Middle Earth Strategy Battle Game tournaments across Kalamazoo, Detroit, Ann Arbor, and Fort Wayne! Discover the excitement brewing in the Great Lakes area!",
     },
-    { name: "og:image", content: "/images/cinematics/hero_desktop.webp" },
+    { name: "og:image", content: "images/cinematics/hero_desktop.webp" },
     { name: "og:type", content: "website" },
     { name: "og:url", content: "https://glhl.org" },
 
@@ -23,12 +23,12 @@ useHead({
       content:
         "Join the Great Lakes Hobbit League for monthly Middle Earth Strategy Battle Game tournaments across Kalamazoo, Detroit, Ann Arbor, and Fort Wayne! Discover the excitement brewing in the Great Lakes area!",
     },
-    { name: "twitter:image", content: "/images/cinematics/hero_desktop.webp" },
+    { name: "twitter:image", content: "images/cinematics/hero_desktop.webp" },
   ],
   link: [
     // Apple touch icon
-    { rel: "apple-touch-icon", href: "/apple-touch-icon.png" }, // Favicon (optional)
-    { rel: "icon", type: "image/x-icon", href: "/favicon.ico" }, // Ensure this path is correct
+    { rel: "apple-touch-icon", href: "apple-touch-icon.png" }, // Favicon (optional)
+    { rel: "icon", type: "image/x-icon", href: "favicon.ico" }, // Ensure this path is correct
   ],
 });
 </script>
