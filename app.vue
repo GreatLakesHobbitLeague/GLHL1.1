@@ -27,7 +27,8 @@ useHead({
   ],
   link: [
     // Apple touch icon
-    { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
+    { rel: "apple-touch-icon", href: "/apple-touch-icon.png" }, // Favicon (optional)
+    { rel: "icon", type: "image/x-icon", href: "/favicon.ico" }, // Ensure this path is correct
   ],
 });
 </script>
