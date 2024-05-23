@@ -108,7 +108,7 @@ onMounted(() => {
           >
             A New Power is Rising.
           </p>
-          <p class="text-center font-mono sm:text-xl my-2">
+          <p class="text-center sm:text-xl my-2">
             Check the latest standings here!
           </p>
           <GlhlButton
@@ -175,7 +175,7 @@ onMounted(() => {
             class="my-auto text-2xl hidden lg:flex"
           ></GlhlButton>
         </div>
-        <p class="font-mono lg:text-left">
+        <p class="lg:text-left">
           {{ events.length > 0 ? events[0].EventDescription : "" }}
         </p>
         <GlhlButton

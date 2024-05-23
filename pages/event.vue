@@ -166,7 +166,7 @@ if (process.client) {
               </p>
             </div>
           </div>
-          <p class="font-mono lg:text-left">
+          <p class="lg:text-left">
             {{ event.EventDescription }}
           </p>
         </div>
