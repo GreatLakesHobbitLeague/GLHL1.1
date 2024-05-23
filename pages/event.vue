@@ -164,6 +164,12 @@ if (process.client) {
               <p class="font-Ringbearer text-xl">
                 {{ event.EventCity }}
               </p>
+              <p class="font-Cinzel font-bold text-xl">
+                Hobby Focus:
+                <span class="font-sans font-medium">
+                  {{ event.HobbyFocus }}</span
+                >
+              </p>
             </div>
           </div>
           <p class="lg:text-left">

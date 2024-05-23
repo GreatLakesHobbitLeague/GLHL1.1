@@ -168,11 +168,17 @@ onMounted(() => {
             <p class="font-Ringbearer text-xl">
               {{ events.length > 0 ? events[0].EventCity : "" }}
             </p>
+            <p class="font-Cinzel font-bold text-xl">
+              Hobby Focus:
+              <span class="font-sans font-medium">
+                {{ events.length > 0 ? events[0].HobbyFocus : "" }}</span
+              >
+            </p>
           </div>
           <GlhlButton
             to="event"
             text="Full details"
-            class="my-auto text-2xl hidden lg:flex"
+            class="my-auto min-w-[13rem] text-2xl hidden lg:flex"
           ></GlhlButton>
         </div>
         <p class="lg:text-left">
