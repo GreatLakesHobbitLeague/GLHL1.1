@@ -10,6 +10,13 @@ export default defineNuxtConfig({
     },
   },
 
+  nitro: {
+    prerender: {
+      // Workaround for "Error: [404] Page not found: /manifest.json"
+      failOnError: false,
+    },
+  },
+
   app: {
     baseURL: "/GLHL1.1/", // Adjust this value to match your GitHub Pages repository name
     buildAssetsDir: "assets", // Specify the directory where built assets will be located
