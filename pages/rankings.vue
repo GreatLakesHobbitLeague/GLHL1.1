@@ -10,6 +10,7 @@ const $supabase = createClient(supabaseUrl, supabaseKey);
 
 const artisans = ref([]);
 const tacticians = ref([]);
+const helperText = ref(false);
 const loading = ref(false);
 const error = ref(null);
 
@@ -53,6 +54,10 @@ const changeTabs = (tab) => {
   } else if (tab === "artisan") {
     activeTab.value = "tactician";
   }
+};
+
+const toggleHelperText = () => {
+  helperText.value = !helperText.value;
 };
 </script>
 <template>
@@ -141,10 +146,24 @@ const changeTabs = (tab) => {
       </section>
 
       <div class="mx-auto w-full flex flex-col px-2">
+        <transition name="slide-in"
+          ><p v-if="helperText" class="mb-4">
+            Names that are <span class="font-semibold">Bolded</span> are
+            qualified. To qualify, a player must participate in 3 events.
+            Rankings are determined by the sum of each player's 3 lowest scores.
+          </p>
+        </transition>
+
         <div class="flex justify-between">
           <!-- Buttons -->
-          <p class="my-auto font-Ringbearer text-sm xs:text-xl">
+          <p class="my-auto font-Ringbearer text-sm xs:text-xl flex gap-1">
             current standings
+            <button
+              @click="toggleHelperText"
+              class="w-5 h-5 hover:scale-110 transition-all"
+            >
+              <img src="/images/icons/info.png" alt="question mark icon" />
+            </button>
           </p>
           <div class="flex gap-1 mr-2">
             <button
