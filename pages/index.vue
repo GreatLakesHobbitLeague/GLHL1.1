@@ -185,7 +185,7 @@ onMounted(() => {
           {{ events.length > 0 ? events[0].EventDescription : "" }}
         </p>
         <GlhlButton
-          to="events"
+          to="event"
           text="Full details"
           class="my-auto mx-auto text-2xl lg:hidden"
         ></GlhlButton>
