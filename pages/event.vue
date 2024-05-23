@@ -11,14 +11,14 @@ const events = ref([]);
 const loading = ref(false);
 const error = ref(null);
 
-const eventImages = [
-  { src: "/images/event-photos/mchc.webp" },
-  { src: "/images/event-photos/february2024.webp" },
-  { src: "/images/event-photos/adepticon2024.webp" },
-  { src: "/images/event-photos/october2023.webp" },
+// const eventImages = [
+//   { src: "images/event-photos/mchc.webp" },
+//   { src: "images/event-photos/february2024.webp" },
+//   { src: "images/event-photos/adepticon2024.webp" },
+//   { src: "images/event-photos/october2023.webp" },
 
-  // Add more images here if needed
-];
+//   // Add more images here if needed
+// ];
 
 onMounted(async () => {
   try {
