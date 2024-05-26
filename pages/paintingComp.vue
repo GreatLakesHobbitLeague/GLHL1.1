@@ -15,11 +15,32 @@ onMounted(() => {
 onUnmounted(() => {
   window.removeEventListener("resize", updateScreenSize);
 });
+
+const images = [
+  "images/cinematics/black_guard_desktop.webp",
+  "images/cinematics/black_guard_desktop.webp",
+  "images/cinematics/black_guard_desktop.webp",
+  "images/cinematics/black_guard_desktop.webp",
+  "images/cinematics/black_guard_desktop.webp",
+  "images/cinematics/black_guard_desktop.webp",
+  "images/cinematics/black_guard_desktop.webp",
+  "images/cinematics/black_guard_desktop.webp",
+  "images/cinematics/black_guard_desktop.webp",
+  "images/cinematics/black_guard_desktop.webp",
+  "images/cinematics/black_guard_desktop.webp",
+  "images/cinematics/black_guard_desktop.webp",
+  "images/cinematics/black_guard_desktop.webp",
+  "images/cinematics/black_guard_desktop.webp",
+];
 </script>
 
 <template>
   <section class="min-h-screen">
     <div class="mt-20 sm:mt-32 md:mt-52"></div>
+
+    <div class="mx-auto w-10/12">
+      <ImageGallery :images="images" />
+    </div>
 
     <iframe
       src="https://docs.google.com/forms/d/e/1FAIpQLSehKxtnM_eP01ACTpmqZCbMMC0FJ2sssFjTgKrLcYkdZnv6_Q/viewform?embedded=true"
