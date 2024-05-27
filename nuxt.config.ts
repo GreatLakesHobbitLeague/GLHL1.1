@@ -22,7 +22,7 @@ export default defineNuxtConfig({
     buildAssetsDir: "assets", // Specify the directory where built assets will be located
   },
 
-  modules: ["@nuxtjs/supabase", "@nuxtjs/google-fonts"],
+  modules: ["@nuxtjs/supabase", "@nuxtjs/google-fonts", "@nuxt/image"],
 
   supabase: {
     url: "https://ienwmfvepudsgvruuuwh.supabase.co",

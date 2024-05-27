@@ -9,28 +9,31 @@ const supabaseKey =
 const $supabase = createClient(supabaseUrl, supabaseKey);
 
 const events = ref([]);
+const heroLink = ref([]);
 const loading = ref(false);
 const error = ref(null);
-
-const eventImages = [
-  { src: "/images/event-photos/mchc.webp" },
-  { src: "/images/event-photos/february2024.webp" },
-  { src: "/images/event-photos/adepticon2024.webp" },
-  { src: "/images/event-photos/october2023.webp" },
-
-  // Add more images here if needed
-];
 
 onMounted(async () => {
   try {
     loading.value = true;
-    const { data, error: fetchError } = await $supabase
+
+    // Fetch events data
+    const { data: eventsData, error: eventsError } = await $supabase
       .from("events")
       .select("*");
-    if (fetchError) {
-      throw new Error(fetchError.message);
+    if (eventsError) {
+      throw new Error(eventsError.message);
     }
-    events.value = data;
+    events.value = eventsData;
+
+    // Fetch heroLink data
+    const { data: heroLinkData, error: heroLinksError } = await $supabase
+      .from("heroLink")
+      .select("*");
+    if (heroLinksError) {
+      throw new Error(heroLinksError.message);
+    }
+    heroLink.value = heroLinkData;
   } catch (err) {
     console.error("Error fetching data:", err.message);
     error.value = "Failed to fetch data";
@@ -50,6 +53,7 @@ onMounted(() => {
   }
 });
 </script>
+
 <template>
   <NuxtLayout>
     <div
@@ -60,6 +64,7 @@ onMounted(() => {
       <div
         class="bg-[url(/public\images\cinematics\hero_mobile.webp)] md:bg-[url(/public\images\cinematics\hero_desktop.jpg)] lg:bg-center bg-cover shadow-lg shadow-black w-full h-full"
       ></div>
+
       <video
         src="public/images/cinematics/spark_overlay.webm"
         class="absolute top-0 left-0 bg-blend-multiply opacity-45 w-full h-full object-cover hidden md:flex"
@@ -67,6 +72,22 @@ onMounted(() => {
         muted
         loop
       ></video>
+
+      <!-- Hero Link -->
+      <div
+        v-if="!loading && heroLink.length > 0 && heroLink[0].Active"
+        class="absolute bottom-[40%] left-1/2 z-10 text-xl text-white p-4 bg-black bg-opacity-85 md:rounded-lg flex flex-col transform -translate-x-1/2 w-full md:w-1/2 lg:w-1/3"
+      >
+        <p class="text-center">
+          {{ heroLink.length > 0 ? heroLink[0].Description : "" }}
+        </p>
+        <GlhlButton
+          :text="` ${heroLink.length > 0 ? heroLink[0].ButtonText : ''} `"
+          :destination="heroLink.length > 0 ? heroLink[0].Route : ''"
+          :external="heroLink.length > 0 ? heroLink[0].External : ''"
+          class="text-black text-center mx-auto my-4"
+        />
+      </div>
     </div>
     <div
       class="relative z-10 flex h-7 bg-gradient-to-b from-glhl-red-500 to-glhl-red-100 shadow-md shadow-black"
@@ -176,8 +197,9 @@ onMounted(() => {
             </p>
           </div>
           <GlhlButton
-            to="event"
+            :destination="events.length > 0 ? events[0].EventLink : ''"
             text="Full details"
+            :external="events.length > 0 ? events[0].External : ''"
             class="my-auto min-w-[13rem] text-2xl hidden lg:flex"
           ></GlhlButton>
         </div>
@@ -185,7 +207,8 @@ onMounted(() => {
           {{ events.length > 0 ? events[0].EventDescription : "" }}
         </p>
         <GlhlButton
-          to="event"
+          :destination="events.length > 0 ? events[0].EventLink : ''"
+          :external="events.length > 0 ? events[0].External : ''"
           text="Full details"
           class="my-auto mx-auto text-2xl lg:hidden"
         ></GlhlButton>
@@ -219,11 +242,13 @@ onMounted(() => {
         class="sponsor"
         href="https://www.barrowhoardrecords.com/"
         target="_blank"
-        ><img
+      >
+        <img
           class="rounded-full"
           src="/public\images\sponsors\bhr_logo.webp"
           alt="barrow hoard records"
-      /></a>
+        />
+      </a>
 
       <a
         class="sponsor"
@@ -238,6 +263,7 @@ onMounted(() => {
     </div>
   </NuxtLayout>
 </template>
+
 <style scoped>
 .sponsor {
   max-width: 90%;

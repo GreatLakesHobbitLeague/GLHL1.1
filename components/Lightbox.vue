@@ -1,15 +1,17 @@
 <template>
-  <div v-if="visible" class="lightbox" @click.self="close">
-    <div class="lightbox-content">
-      <button class="close-btn" @click="close">×</button>
-      <img :src="images[index]" alt="Image" />
-      <p
-        class="caption image-caption bg-gradient-to-b from-glhl-red-100 to-glhl-red-400 w-full rounded-b-2xl font-Cinzel font-bold"
-      >
-        Entry {{ index + 1 }}
-      </p>
-    </div>
-  </div>
+  <transition name="fade"
+    ><div v-if="visible" class="lightbox" @click.self="close">
+      <div class="lightbox-content">
+        <button class="close-btn" @click="close">×</button>
+        <NuxtImg :src="images[index].src" alt="Image" />
+        <p
+          class="caption image-caption bg-gradient-to-b from-glhl-red-100 to-glhl-red-400 w-full rounded-b-2xl font-Cinzel font-bold"
+        >
+          Entry {{ index + 1 }}
+        </p>
+      </div>
+    </div></transition
+  >
 </template>
 
 <script setup>

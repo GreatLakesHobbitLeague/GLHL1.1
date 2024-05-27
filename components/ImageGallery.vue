@@ -11,12 +11,17 @@
       v-for="(image, idx) in images"
       :key="idx"
     >
-      <img
-        :src="image"
+      <NuxtImg
+        :src="image.src"
         :alt="`Entry ${idx + 1}`"
         @click="showImage(idx)"
+        @load="handleImageLoad(idx)"
         class="gallery-image rounded-t-lg"
+        width="200"
+        height="200"
+        fit="cover"
       />
+
       <p
         class="image-caption bg-gradient-to-b from-glhl-red-100 to-glhl-red-400 w-full rounded-b-lg shadow-sm shadow-black font-Cinzel font-bold"
       >
@@ -41,11 +46,16 @@ const props = defineProps({
 // State variables
 const lightboxVisible = ref(false);
 const lightboxIndex = ref(0);
+const loaded = ref(Array(props.images.length).fill(false));
 
 // Methods
 const showImage = (idx) => {
   lightboxIndex.value = idx;
   lightboxVisible.value = true;
+};
+
+const handleImageLoad = (idx) => {
+  loaded.value[idx] = true;
 };
 </script>
 

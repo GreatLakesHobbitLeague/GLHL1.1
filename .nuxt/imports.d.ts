@@ -29,4 +29,5 @@ export { injectHead, useHead, useSeoMeta, useHeadSafe, useServerHead, useServerS
 export { useSupabaseClient } from '../node_modules/@nuxtjs/supabase/dist/runtime/composables/useSupabaseClient';
 export { useSupabaseSession } from '../node_modules/@nuxtjs/supabase/dist/runtime/composables/useSupabaseSession';
 export { useSupabaseUser } from '../node_modules/@nuxtjs/supabase/dist/runtime/composables/useSupabaseUser';
+export { useImage } from '../node_modules/@nuxt/image/dist/runtime/composables';
 export { definePageMeta } from '../node_modules/nuxt/dist/pages/runtime/composables';
