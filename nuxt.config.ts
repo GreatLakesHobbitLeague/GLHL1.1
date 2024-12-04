@@ -18,7 +18,7 @@ export default defineNuxtConfig({
   },
 
   app: {
-    baseURL: "/", // Adjust this value to match your GitHub Pages repository name
+    baseURL: "/GLHL1.1", // Adjust this value to match your GitHub Pages repository name
     // buildAssetsDir: "assets", // Specify the directory where built assets will be located
   },
 
