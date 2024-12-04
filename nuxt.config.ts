@@ -19,7 +19,7 @@ export default defineNuxtConfig({
 
   app: {
     baseURL: "/GLHL1.1", // Adjust this value to match your GitHub Pages repository name
-    // buildAssetsDir: "assets", // Specify the directory where built assets will be located
+    buildAssetsDir: "assets", // Specify the directory where built assets will be located
   },
 
   modules: ["@nuxtjs/supabase", "@nuxtjs/google-fonts", "@nuxt/image"],
