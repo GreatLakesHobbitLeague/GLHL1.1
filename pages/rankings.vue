@@ -21,7 +21,8 @@ onMounted(async () => {
     // Fetch data from the "artisansOfLegend" table
     const { data: artisansData, error: artisansError } = await $supabase
       .from("artisansOfLegend")
-      .select("*");
+      .select("*")
+      .order("Rank", { ascending: true });
 
     if (artisansError) {
       throw new Error(artisansError.message);
@@ -31,7 +32,8 @@ onMounted(async () => {
     // Fetch data from the "tacticiansOfLegend" table
     const { data: tacticiansData, error: tacticiansError } = await $supabase
       .from("tacticiansOfLegend")
-      .select("*");
+      .select("*")
+      .order("Rank", { ascending: true });
 
     if (tacticiansError) {
       throw new Error(tacticiansError.message);

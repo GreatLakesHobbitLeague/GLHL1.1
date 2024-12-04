@@ -20,7 +20,8 @@ onMounted(async () => {
     // Fetch data from the "legend" table
     const { data: legendData, error: legendError } = await $supabase
       .from("artisansOfLegend")
-      .select("*");
+      .select("*")
+      .order("Rank", { ascending: true });
 
     if (legendError) {
       throw new Error(legendError.message);
@@ -30,7 +31,8 @@ onMounted(async () => {
     // Fetch data from the "valour" table
     const { data: valourData, error: valourError } = await $supabase
       .from("artisansOfValour")
-      .select("*");
+      .select("*")
+      .order("Rank", { ascending: true });
 
     if (valourError) {
       throw new Error(valourError.message);
@@ -40,7 +42,8 @@ onMounted(async () => {
     // Fetch data from the "fortitude" table
     const { data: fortitudeData, error: fortitudeError } = await $supabase
       .from("artisansOfFortitude")
-      .select("*");
+      .select("*")
+      .order("Rank", { ascending: true });
 
     if (fortitudeError) {
       throw new Error(fortitudeError.message);
