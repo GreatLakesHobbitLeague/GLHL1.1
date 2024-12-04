@@ -69,6 +69,11 @@ pnpm run preview
 yarn preview
 
 # bun
+
+To DEPLOY
+
+![image](https://github.com/user-attachments/assets/a78a5c8f-cc87-474f-8f0a-800f8e00e6c2)
+
 bun run preview
 ```
 
