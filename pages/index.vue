@@ -99,7 +99,7 @@ onMounted(() => {
 
     <img
       class="w-full opacity-10 mx-auto my-20 max-w-[90%]"
-      src="C:\Users\whata\OneDrive\Documents\GLHL\public\images\mesbg-silhouettes\Gandalf.png"
+      src="/images/mesbg-silhouettes/Gandalf.png"
       alt="gandalf staff"
     />
 
@@ -108,7 +108,7 @@ onMounted(() => {
     <!-- SPACER -->
     <img
       class="w-full opacity-10 mx-auto my-20 max-w-[90%]"
-      src="C:\Users\whata\OneDrive\Documents\GLHL\public\images\mesbg-silhouettes\Anduril.png"
+      src="/images/mesbg-silhouettes/Anduril.png"
       alt="Anduril"
     />
 
@@ -145,12 +145,12 @@ onMounted(() => {
     <div class="flex justify-center mx-auto gap-8 max-w-[90%]">
       <img
         class="md:w-[50%] w-full opacity-10 my-[5rem] flex"
-        src="C:\Users\whata\OneDrive\Documents\GLHL\public\images\mesbg-silhouettes\Uruk_1.png"
+        src="/images/mesbg-silhouettes/Uruk_1.png"
         alt="uruk sword"
       />
       <img
         class="w-[50%] opacity-10 my-[5rem] transform scale-x-[-1] md:flex hidden"
-        src="C:\Users\whata\OneDrive\Documents\GLHL\public\images\mesbg-silhouettes\Uruk_1.png"
+        src="/images/mesbg-silhouettes/Uruk_1.png"
         alt="uruk sword"
       />
     </div>
@@ -219,12 +219,12 @@ onMounted(() => {
     <div class="flex justify-center mx-auto gap-8 max-w-[90%]">
       <img
         class="md:w-[50%] w-full opacity-10 my-[5rem] flex"
-        src="C:\Users\whata\OneDrive\Documents\GLHL\public\images\mesbg-silhouettes\Gimli_1.png"
+        src="/images/mesbg-silhouettes/Gimli_1.png"
         alt="gimli axe"
       />
       <img
         class="w-[50%] opacity-10 my-[5rem] transform scale-x-[-1] md:flex hidden"
-        src="C:\Users\whata\OneDrive\Documents\GLHL\public\images\mesbg-silhouettes\Gimli_1.png"
+        src="/images/mesbg-silhouettes/Gimli_1.png"
         alt="gimli axe"
       />
     </div>

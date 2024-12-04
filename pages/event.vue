@@ -93,12 +93,12 @@ if (process.client) {
     <div class="flex justify-center mx-auto gap-8 max-w-[90%]">
       <img
         class="md:w-[50%] w-full opacity-10 my-[5rem] flex"
-        src="C:\Users\whata\OneDrive\Documents\GLHL\public\images\mesbg-silhouettes\Sting.png"
+        src="/images/mesbg-silhouettes/Sting.png"
         alt="sting"
       />
       <img
         class="w-[50%] opacity-10 my-[5rem] transform scale-x-[-1] md:flex hidden"
-        src="C:\Users\whata\OneDrive\Documents\GLHL\public\images\mesbg-silhouettes\Sting.png"
+        src="/images/mesbg-silhouettes/Sting.png"
         alt="sting"
       />
     </div>
@@ -109,12 +109,12 @@ if (process.client) {
     <div class="flex justify-center mx-auto gap-8 max-w-[90%]">
       <img
         class="md:w-[50%] w-full opacity-10 my-[5rem] flex"
-        src="C:\Users\whata\OneDrive\Documents\GLHL\public\images\mesbg-silhouettes\Gimli_1.png"
+        src="/images/mesbg-silhouettes/Gimli_1.png"
         alt="gimli axe"
       />
       <img
         class="w-[50%] opacity-10 my-[5rem] transform scale-x-[-1] md:flex hidden"
-        src="C:\Users\whata\OneDrive\Documents\GLHL\public\images\mesbg-silhouettes\Gimli_1.png"
+        src="/images/mesbg-silhouettes/Gimli_1.png"
         alt="gimli axe"
       />
     </div>
