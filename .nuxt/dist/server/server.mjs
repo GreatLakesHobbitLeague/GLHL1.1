@@ -1,1 +1,0 @@
-export { default } from "file:///C:/Users/whata/OneDrive/Documents/GLHL/node_modules/@nuxt/vite-builder/dist/runtime/vite-node.mjs"
